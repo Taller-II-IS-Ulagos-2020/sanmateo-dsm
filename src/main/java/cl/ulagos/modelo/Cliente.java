@@ -22,6 +22,12 @@ public class Cliente implements Serializable {
 	@OneToMany(mappedBy="cliente")
 	private List<Producto> productos;
 	
+	public Cliente(int run, String nombre) {
+		
+		this.run = run;
+		this.nombre = nombre;
+	}
+	
 	public Cliente() {
 		super();
 	}
