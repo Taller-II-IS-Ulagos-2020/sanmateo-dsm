@@ -15,7 +15,8 @@ public class Producto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String name;
+	private String nombre;
+	private int precio;
 
 	@ManyToOne()
 	@JoinColumn(name="run")
@@ -29,12 +30,20 @@ public class Producto {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	
+	public int getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(int precio) {
+		this.precio = precio;
 	}
 
 	public Cliente getCliente() {

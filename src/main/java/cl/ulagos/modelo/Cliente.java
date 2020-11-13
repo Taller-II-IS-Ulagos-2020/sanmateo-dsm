@@ -28,6 +28,11 @@ public class Cliente implements Serializable {
 		this.nombre = nombre;
 	}
 	
+	public Cliente(int run) {
+		
+		this.run = run;
+	}
+	
 	public Cliente() {
 		super();
 	}

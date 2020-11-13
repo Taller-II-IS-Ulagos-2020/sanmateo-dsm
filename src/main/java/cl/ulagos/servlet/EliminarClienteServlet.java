@@ -1,4 +1,5 @@
 package cl.ulagos.servlet;
+
 import javax.naming.InitialContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,12 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import cl.ulagos.dao.DAOCliente;
 import cl.ulagos.modelo.Cliente;
 
-@WebServlet(name="IngresarCliente", urlPatterns = {"/controlador/IngresarCliente"})
-public class IngresarClienteServlet extends HttpServlet{
+@WebServlet(name="EliminarCliente", urlPatterns = {"/controlador/EliminarCliente"})
+public class EliminarClienteServlet extends HttpServlet{
 
-	private static final long serialVersionUID = -4821311138626404137L;
+	private static final long serialVersionUID = 4158720702892308084L;
 	private DAOCliente daoCliente = null;
-
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException{
 
 		try{
@@ -23,18 +24,23 @@ public class IngresarClienteServlet extends HttpServlet{
 		}catch (Exception e) {
 			System.out.println("Problema:"+ e);
 		}
-
+		
 		String run = request.getParameter("run");
 		run = run.replaceAll("\\.", "").split("-")[0];
-		String nombre = request.getParameter("nombre");
-
+		
 		try {
 			int runI = Integer.parseInt(run);
-			daoCliente.ingresar(new Cliente(runI,nombre));
-		
+			Cliente cliente = daoCliente.buscar(new Cliente(runI));
+
+			if (cliente != null) {
+				daoCliente.eliminar(cliente);
+			}
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		
 	}
 }

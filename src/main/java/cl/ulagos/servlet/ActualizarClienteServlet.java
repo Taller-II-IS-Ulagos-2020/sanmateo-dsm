@@ -1,4 +1,5 @@
 package cl.ulagos.servlet;
+
 import javax.naming.InitialContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,10 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import cl.ulagos.dao.DAOCliente;
 import cl.ulagos.modelo.Cliente;
 
-@WebServlet(name="IngresarCliente", urlPatterns = {"/controlador/IngresarCliente"})
-public class IngresarClienteServlet extends HttpServlet{
+@WebServlet(name="ActualizaCliente", urlPatterns = {"/controlador/ActualizaCliente"})
+public class ActualizarClienteServlet extends HttpServlet{
 
-	private static final long serialVersionUID = -4821311138626404137L;
+
+	private static final long serialVersionUID = 3161206052718206619L;
 	private DAOCliente daoCliente = null;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException{
@@ -28,13 +30,20 @@ public class IngresarClienteServlet extends HttpServlet{
 		run = run.replaceAll("\\.", "").split("-")[0];
 		String nombre = request.getParameter("nombre");
 
+
 		try {
 			int runI = Integer.parseInt(run);
-			daoCliente.ingresar(new Cliente(runI,nombre));
-		
+			Cliente cliente = daoCliente.buscar(new Cliente(runI));
+
+			if (cliente != null) {
+				cliente.setNombre(nombre);
+				daoCliente.modificar(cliente);
+			}
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 	}
 }
