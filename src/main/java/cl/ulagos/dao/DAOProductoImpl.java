@@ -25,4 +25,20 @@ public class DAOProductoImpl implements DAOProducto {
 		List<Producto> listaProducto = query.getResultList();
 		return listaProducto;
 	}
+
+
+	@Override
+	public Producto buscar(Producto producto) throws Exception {
+		// TODO Auto-generated method stub
+		Producto buscaProducto = em.find(Producto.class, producto.getId());
+		return buscaProducto;
+		
+	}
+
+
+	@Override
+	public void modificar(Producto producto) throws Exception {
+		// TODO Auto-generated method stub
+		em.merge(producto);
+	}
 }

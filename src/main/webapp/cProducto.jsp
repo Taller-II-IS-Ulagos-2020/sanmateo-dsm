@@ -16,7 +16,7 @@
 
 
 <form id="basic-form" action="/sanmateo/controlador/ComprarProducto" method="POST">
-<input type="button" id="btnGuardar" value="Guardar" name="Guardar">
+<input class="submit" type="submit" id="btnGuardar" value="Guardar" name="btnGuardar">
  <table id="listaProducto">
              <thead>
                 <tr>

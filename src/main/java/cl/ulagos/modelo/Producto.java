@@ -22,6 +22,7 @@ public class Producto {
 	@JoinColumn(name="run")
 	private Cliente cliente;
 	
+	
 	public Long getId() {
 		return id;
 	}

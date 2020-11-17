@@ -2,6 +2,7 @@ package cl.ulagos.servlet;
 
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.naming.InitialContext;
 import javax.servlet.ServletException;
@@ -9,8 +10,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.w3c.dom.html.HTMLTableRowElement;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -62,17 +61,18 @@ public class ComprarProductoServlet extends HttpServlet {
 				fila.add(p.getNombre());
 				fila.add(p.getPrecio());
 
-				JsonObject arrayCliente = new JsonObject();
 				List<Cliente> clientes = daoCliente.listar();
+				JsonArray selectorCliente = new JsonArray();
 				for (Cliente c: clientes)
 				{
-					arrayCliente.addProperty("run",c.getRun());
-					arrayCliente.addProperty("nombre",c.getNombre());
-					if (p.getCliente() !=null)
-						arrayCliente.addProperty("selected",true);
-					fila.add(arrayCliente);
+					JsonObject objetoCliente = new JsonObject();
+					objetoCliente.addProperty("run",c.getRun());
+					objetoCliente.addProperty("nombre",c.getNombre());
+					if (p.getCliente() != null && p.getCliente().getRun() ==c.getRun())
+						objetoCliente.addProperty("selected",true);
+					selectorCliente.add(objetoCliente);
 				}
-
+				fila.add(selectorCliente);
 				datos.add(fila);
 			}
 
@@ -96,11 +96,32 @@ public class ComprarProductoServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException{
 		
 		String data = request.getParameter("dtTable");
-		HTMLTableRowElement targetObject = new Gson().fromJson(data, HTMLTableRowElement.class);
-		System.out.println(targetObject);
-
-		
-		
+		data = data.substring(0, data.length()-1);
+		String compraCliente[] = data.split(Pattern.quote("|"));
+		for (String cC : compraCliente) {
+			
+			Long idProducto = Long.parseLong(cC.split(Pattern.quote("-"))[0]);
+			String runStr = cC.split(Pattern.quote("-"))[1];
+			String nombreStr = cC.split(Pattern.quote("-"))[2];
+			
+			if (!runStr.equals("null")) {
+				int run = Integer.parseInt(runStr);
+				Cliente cliente = new Cliente(run,nombreStr);
+				Producto producto = new Producto();
+				producto.setId(idProducto);
+				
+				try {
+					Cliente clienteBD = daoCliente.buscar(cliente);
+					Producto productoBD = daoProducto.buscar(producto);
+					productoBD.setCliente(clienteBD);
+					daoProducto.modificar(productoBD);
+					
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 }
 

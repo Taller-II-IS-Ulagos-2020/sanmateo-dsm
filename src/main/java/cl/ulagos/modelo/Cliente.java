@@ -19,7 +19,7 @@ public class Cliente implements Serializable {
 	private int run;
 	private String nombre;
 
-	@OneToMany(mappedBy="cliente")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="cliente", cascade = CascadeType.ALL)
 	private List<Producto> productos;
 	
 	public Cliente(int run, String nombre) {
@@ -51,6 +51,14 @@ public class Cliente implements Serializable {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public List<Producto> getProductos() {
+		return productos;
+	}
+
+	public void setProductos(List<Producto> productos) {
+		this.productos = productos;
 	}
    
 }

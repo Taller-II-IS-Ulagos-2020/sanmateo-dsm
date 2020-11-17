@@ -12,7 +12,7 @@
 <body>
 
 <h2>Ingresar un Nuevo Cliente</h2>
-	<form id="basic-form" action="/sanmateo/controlador/IngresarCliente" method="GET">
+	<form id="basic-form" name="basic-form" action="/sanmateo/controlador/IngresarCliente" method="GET">
 		<table>
 			<tr>
 				<td>Run:</td>
@@ -22,7 +22,7 @@
 			</tr>
 			<tr>
 				<td>Nombre:</td>
-				<td><input type="text" name="nombre"></td>
+				<td><input type="text" id="nombre" name="nombre"></td>
 			</tr>
 			<tr>
 				<td></td>

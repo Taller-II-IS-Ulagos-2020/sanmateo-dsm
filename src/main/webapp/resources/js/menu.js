@@ -53,4 +53,5 @@ jQuery(document).ready(function() {
 			e.preventDefault();
 			$("#someFrame").attr("src", $(this).attr("href"));
 		});
+		
 });

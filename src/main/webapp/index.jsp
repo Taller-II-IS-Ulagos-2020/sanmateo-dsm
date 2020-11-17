@@ -37,6 +37,7 @@
 
 						<ul>
 							<li><a id="idCProducto" href="cProducto.jsp" class="new">Producto</a></li>
+							<li><a id="ventas" href="/sanmateo/controlador/ResumenVenta" class="new">Ventas</a></li>
 	
 						</ul>
 					</li>

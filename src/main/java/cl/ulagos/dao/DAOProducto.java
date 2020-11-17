@@ -6,5 +6,7 @@ import cl.ulagos.modelo.Producto;
 
 public interface DAOProducto {
 
+	public void modificar(Producto producto) throws Exception;
+	public Producto buscar(Producto producto) throws Exception;
 	public List<Producto> listar() throws Exception;
 }
