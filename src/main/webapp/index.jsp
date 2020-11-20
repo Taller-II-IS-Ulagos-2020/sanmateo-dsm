@@ -8,6 +8,17 @@
 <script src="resources/js/menu.js"></script>
 <link rel="stylesheet" href="resources/css/menu.css">
 </head>
+<%
+	ServletContext app = getServletConfig().getServletContext();
+	InputStream inputStream = application.getResourceAsStream("/META-INF/MANIFEST.MF");
+	Manifest manifest = new Manifest(inputStream);
+	Attributes atts = manifest.getMainAttributes();
+	String values[] = atts.getValue("Implementation-Version").split("\\-");
+	long val = Long.parseLong(values[2]);
+	Timestamp ts = new Timestamp(val);
+	DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+	String date = df.format(new Date(ts.getTime()));
+%>
 <body>
 	<table>
 		<tr>
@@ -50,11 +61,11 @@
 					id="someFrame" width="1300" height="550">Hola Mundo</iframe></td>
 		</tr>
 	</table>
-	
-	
-	
-	
-	
-	
+	<table>
+		<tr>
+			<td>SanMateo versión: <b><%=values[1]%></b>, compilada el <b><%=date%></b>.
+			</td>
+		</tr>
+	</table>
 </body>
 </html>  

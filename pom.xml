@@ -16,10 +16,16 @@
 
 	<groupId>cl.ulagos</groupId>
 	<artifactId>sanmateo</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.1</version>
 	<packaging>war</packaging>
-	<name>WildFly Quickstarts: sanmateo</name>
-	<description>A starter Java EE 7 webapp project for use on JBoss WildFly / WildFly, generated from the jboss-javaee6-webapp archetype</description>
+	<name>Proyecto base para  sanmateo</name>
+	<description>Ejemplo de uso aplicacion JEE en servidor Wildfly </description>
+
+	<scm>
+		<connection>scm:git:https://github.com/Taller-II-IS-Ulagos-2020/sanmateo-dsm</connection>
+		<developerConnection>scm:git:https://github.com/Taller-II-IS-Ulagos-2020/sanmateo-dsm</developerConnection>
+		<url>http://localhost:8080/sanmateo</url>
+	</scm>
 
 	<url>http://wildfly.org</url>
 	<licenses>
@@ -47,7 +53,7 @@
 		<!-- other plugin versions -->
 		<version.compiler.plugin>3.1</version.compiler.plugin>
 		<version.surefire.plugin>2.16</version.surefire.plugin>
-		<version.war.plugin>2.5</version.war.plugin>
+		<version.war.plugin>3.3.1</version.war.plugin>
 
 		<!-- maven-compiler-plugin -->
 		<maven.compiler.target>13</maven.compiler.target>
@@ -268,6 +274,14 @@
 				<configuration>
 					<!-- Java EE 7 doesn't require web.xml, Maven needs to catch up! -->
 					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+						</manifest>
+						<manifestEntries>
+							<Implementation-Version>${project.version}-${buildNumber}-${timestamp}</Implementation-Version>
+						</manifestEntries>
+					</archive>
 				</configuration>
 			</plugin>
 			<!-- The WildFly plugin deploys your war to a local WildFly container -->
@@ -305,6 +319,19 @@
 						<configuration>
 							<skip>true</skip>
 						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>buildnumber-maven-plugin</artifactId>
+						<version>1.4</version>
+						<executions>
+							<execution>
+								<phase>validate</phase>
+								<goals>
+									<goal>create</goal>
+								</goals>
+							</execution>
+						</executions>
 					</plugin>
 				</plugins>
 			</build>
