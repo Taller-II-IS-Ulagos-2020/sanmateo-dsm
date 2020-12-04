@@ -19,7 +19,7 @@ public class Cliente implements Serializable {
 	private int run;
 	private String nombre;
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy="cliente", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="cliente", cascade = CascadeType.ALL, orphanRemoval= true)
 	private List<Producto> productos;
 	
 	public Cliente(int run, String nombre) {

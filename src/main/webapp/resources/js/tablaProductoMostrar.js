@@ -1,13 +1,13 @@
-  jQuery(document).ready(function () {
-                $('#listaCliente').dataTable( {
+jQuery(document).ready(function () {
+                $('#listaProductoMostrar').dataTable( {
                  "bProcessing": false,
        			 "bServerSide": false,
                  ajax: {
-                    url: "/sanmateo/controlador/ListarCliente",
+                    url: "/sanmateo/controlador/ListarProducto",
                     type: "GET", 
                     contentType: "application/json; charset=utf-8",
            			dataType: 'json'
                 }
               });
-
+              
  });

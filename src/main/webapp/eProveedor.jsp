@@ -10,25 +10,26 @@
 <script src="resources/js/jquery.mask.min.js"></script>
 <script type="text/javascript">
 jQuery(document).ready(function() {
+
+	 $("#run").mask('00.000.000-0');	
 	  $("#basic-form").validate({
 	    rules: {
-	      idProducto: {
+	      run: {
 	        required: true,
 	        number:true
 	      }
 	    }
 	  });
 });
-</script>
 </head>
 <body>
-<h2>Eliminar un Producto</h2>
-<form id="basic-form" action="/sanmateo/controlador/EliminarProducto" method="GET">
+<h2>Eliminar un Proveedor</h2>
+<form id="basic-form" action="/sanmateo/controlador/EliminarProveedor" method="GET">
 		<table>
 			<tr>
-				<td>Id:</td>
+				<td>Run:</td>
 				<td>
-					<input id= "idProducto" type="text" name="idProducto" >
+					<input id= "run" type="text" name="run" >
 				</td>
 			</tr>
 			<tr>

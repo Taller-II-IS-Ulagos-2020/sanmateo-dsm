@@ -41,4 +41,20 @@ public class DAOProductoImpl implements DAOProducto {
 		// TODO Auto-generated method stub
 		em.merge(producto);
 	}
+
+
+	@Override
+	public void ingresar(Producto producto) throws Exception {
+		// TODO Auto-generated method stub
+		em.persist(producto);
+		em.flush();
+	}
+
+
+	@Override
+	public void eliminar(Producto producto) throws Exception {
+		// TODO Auto-generated method stub
+		Producto p = em.merge(producto);
+		em.remove(p);
+	}
 }

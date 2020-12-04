@@ -41,6 +41,16 @@
 							<li><a id="idEProducto" href="eProducto.jsp" class="new">Eliminar Producto</a></li>
 							<li><a id="idAProducto" href="aProducto.jsp" class="new">Actualizar Producto</a></li>
 							<li><a id="idLProducto" href="lProducto.jsp" class="new">Listar Producto</a></li>
+							<li><a id="idProductoProveedor" href="pProveedor.jsp" class="new">Prod-Prov</a></li>
+						</ul>
+					</li>
+					
+					<li><a href="#">Proveedor</a>
+						<ul>
+							<li><a id="idIProveedor" href="iProveedor.jsp" class="new">Ingresar Proveedor</a></li>
+							<li><a id="idEProveedor" href="eProveedor.jsp" class="new">Eliminar Proveedor</a></li>
+							<li><a id="idAProveedor" href="aProveedor.jsp" class="new">Actualizar Proveedor</a></li>
+							<li><a id="idLProveedor" href="lProveedor.jsp" class="new">Listar Proveedor</a></li>
 						</ul>
 					</li>
 					

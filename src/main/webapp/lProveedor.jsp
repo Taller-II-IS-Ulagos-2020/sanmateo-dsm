@@ -4,21 +4,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Listar Productos</title>
+<title>Listar Clientes</title>
 <script src="resources/js/jquery-3.5.1.min.js"></script>
 <script src="resources/js/datatables.min.js"></script>
-<script src="resources/js/tablaProductoMostrar.js"></script>
+<script src="resources/js/tablaCliente.js"></script>
 <link rel="stylesheet" href="resources/css/datatables.min.css">
 </head>
 <body>
-<h2>Listar Productos</h2>
+<h2>Listar Proveedores</h2>
           
-        <table id="listaProductoMostrar">
+        <table id="listarProveedor">
              <thead>
                 <tr>
-                    <th>Id</th>
-                   <th>Nombre</th>      
-                   <th>Precio</th>                             
+                    <th>Run</th>
+                   <th>Nombre</th>                     
                 </tr>
               </thead>
          </table>

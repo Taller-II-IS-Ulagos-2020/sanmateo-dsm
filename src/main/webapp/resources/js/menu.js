@@ -54,4 +54,43 @@ jQuery(document).ready(function() {
 			$("#someFrame").attr("src", $(this).attr("href"));
 		});
 		
+		$("#idProductoProveedor").click(function(e) {
+			
+			e.preventDefault();
+			$("#someFrame").attr("src", $(this).attr("href"));
+		});
+		
+		
+		
+		$("#idIProveedor").click(function(e) {
+			
+			e.preventDefault();
+			$("#someFrame").attr("src", $(this).attr("href"));
+		});
+		
+		$("#idEProveedor").click(function(e) {
+			
+			e.preventDefault();
+			$("#someFrame").attr("src", $(this).attr("href"));
+		});
+		
+		$("#idAProveedor").click(function(e) {
+			
+			e.preventDefault();
+			$("#someFrame").attr("src", $(this).attr("href"));
+		});
+		
+		$("#idLProveedor").click(function(e) {
+			
+			e.preventDefault();
+			$("#someFrame").attr("src", $(this).attr("href"));
+		});
+		
+		$("#idCProducto").click(function(e) {
+			
+			e.preventDefault();
+			$("#someFrame").attr("src", $(this).attr("href"));
+		});
+		
+		
 });
